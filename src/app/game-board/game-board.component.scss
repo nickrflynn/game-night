@@ -1,0 +1,74 @@
+$white: #ffffff;
+$red: #cd300d;
+$blue: #0d75fb;
+$black: #333d43;
+$tan: #dfc6a4;
+$gold: #ffd900;
+
+.mat-card {
+    font-family: 'league-gothic', sans-serif;
+    font-size: 4rem;
+    height: calc(100% - 96px);
+    width: calc(100% - 96px);
+    user-select: none;
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background-color: darken($white, 5%);
+    }
+
+    &.red {
+        background-color: $red;
+
+        &:hover {
+            background-color: darken($red, 5%);
+        }
+    }
+
+    &.blue {
+        background-color: $blue;
+
+        &:hover {
+            background-color: darken($blue, 5%);
+        }
+    }
+
+    &.black {
+        background-color: $black;
+
+        &:hover {
+            background-color: darken($black, 5%);
+        }
+    }
+
+    &.tan {
+        background-color: $tan;
+
+        &:hover {
+            background-color: darken($tan, 5%);
+        }
+    }
+
+    .reveal {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border-radius: 10px 0 0 0;
+        padding: 10px 25px;
+        font-family: 'league-gothic', sans-serif;
+        font-size: 2rem;
+        visibility: hidden;
+        background-color: $gold;
+    }
+
+    &:active,
+    &:focus,
+    &:hover {
+        .reveal {
+            visibility: visible;
+        }
+    }
+}
