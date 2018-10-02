@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CodenamesCardService } from '../codenames/codenames-card.service';
 
 @Component({
     selector: 'app-lobby',
@@ -7,7 +8,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./lobby.component.scss']
 })
 export class LobbyComponent implements OnInit {
-    constructor(private router: Router) {}
+    constructor(private router: Router, private codenamesService: CodenamesCardService) {}
 
     ngOnInit() {}
 
@@ -21,7 +22,10 @@ export class LobbyComponent implements OnInit {
         //   - determine placement
 
         // route to game board
-        this.router.navigate(['/board']);
+
+        this.codenamesService.newGame().subscribe(game => {
+            this.router.navigate(['/board', game.id]);
+        });
     }
 
     joinGame(): void {

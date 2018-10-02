@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GameKeyComponent } from './game-key.component';
+import { CodenamesKeyComponent } from './codenames-key.component';
 
-describe('GameKeyComponent', () => {
-  let component: GameKeyComponent;
-  let fixture: ComponentFixture<GameKeyComponent>;
+describe('CodenamesKeyComponent', () => {
+  let component: CodenamesKeyComponent;
+  let fixture: ComponentFixture<CodenamesKeyComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GameKeyComponent ]
+      declarations: [ CodenamesKeyComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GameKeyComponent);
+    fixture = TestBed.createComponent(CodenamesKeyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
