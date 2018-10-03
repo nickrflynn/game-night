@@ -29,7 +29,6 @@ export class LobbyComponent implements OnInit {
     }
 
     joinGame(): void {
-        // prompt for game id
-        // route to game board
+        this.router.navigate(['/join']);
     }
 }

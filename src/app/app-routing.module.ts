@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LobbyComponent } from './lobby/lobby.component';
 import { CodenamesBoardComponent } from './codenames/codenames-board/codenames-board.component';
 import { CodenamesKeyComponent } from './codenames/codenames-key/codenames-key.component';
+import { CodenamesJoinComponent } from './codenames/codenames-join/codenames-join.component';
 
 const routes: Routes = [
     {
@@ -22,6 +23,10 @@ const routes: Routes = [
     {
         path: 'key/:id',
         component: CodenamesKeyComponent
+    },
+    {
+        path: 'join',
+        component: CodenamesJoinComponent
     }
 ];
 

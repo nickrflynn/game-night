@@ -12,3 +12,7 @@
         </mat-card>
     </mat-grid-tile>
 </mat-grid-list>
+<button mat-raised-button class="key-board-toggle mat-elevation-z9" (click)="navigateToKey()" *ngIf="cards && !isKey">View
+    Key</button>
+<button mat-raised-button class="key-board-toggle mat-elevation-z9" (click)="navigateToBoard()" *ngIf="cards && isKey">View
+    Board</button>

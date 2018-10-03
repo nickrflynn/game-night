@@ -5,8 +5,19 @@ $black: #333d43;
 $tan: #dfc6a4;
 $gold: #ffd900;
 
+.key-board-toggle {
+    font-family: 'league-gothic', sans-serif;
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-left: 25px;
+    margin-top: 10px;
+    padding: 15px 30px;
+    background-color: $gold;
+}
+
 .mat-card {
     font-family: 'league-gothic', sans-serif;
+    text-transform: uppercase;
     font-size: 4rem;
     height: calc(100% - 96px);
     width: calc(100% - 96px);
@@ -72,10 +83,13 @@ $gold: #ffd900;
 }
 
 .key {
+    $locked-outline-width: 15px;
+
     &.red {
         &.locked {
             background-color: $red;
-            border: 15px solid darken($red, 25%);
+            outline: $locked-outline-width solid darken($red, 25%);
+            outline-offset: -$locked-outline-width;
         }
 
         background-color: lighten($red, 25%);
@@ -84,7 +98,8 @@ $gold: #ffd900;
     &.blue {
         &.locked {
             background-color: $blue;
-            border: 15px solid darken($blue, 25%);
+            outline: $locked-outline-width solid darken($blue, 25%);
+            outline-offset: -$locked-outline-width;
         }
 
         background-color: lighten($blue, 25%);
@@ -93,7 +108,8 @@ $gold: #ffd900;
     &.black {
         &.locked {
             background-color: $black;
-            border: 15px solid darken($black, 25%);
+            outline: $locked-outline-width solid darken($black, 25%);
+            outline-offset: -$locked-outline-width;
         }
 
         background-color: lighten($black, 25%);
@@ -102,9 +118,36 @@ $gold: #ffd900;
     &.tan {
         &.locked {
             background-color: $tan;
-            border: 15px solid darken($tan, 25%);
+            outline: $locked-outline-width solid darken($tan, 25%);
+            outline-offset: -$locked-outline-width;
         }
 
         background-color: lighten($tan, 25%);
+    }
+}
+
+@media only screen and (max-width: 1600px) {
+    .mat-card {
+        font-size: 3.5rem;
+        height: calc(100% - 72px);
+        width: calc(100% - 72px);
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .mat-card {
+        font-size: 2.5rem;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .mat-card {
+        font-size: 2rem;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .mat-card {
+        font-size: 1.5rem;
     }
 }

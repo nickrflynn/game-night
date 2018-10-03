@@ -1,0 +1,77 @@
+:host {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+button,
+a {
+    font-family: 'league-gothic', sans-serif !important;
+    font-size: 2rem;
+    padding: 15px 35px;
+    text-transform: uppercase;
+}
+
+.code-picker-container {
+    height: 500px;
+    width: 400px;
+    text-align: center;
+
+    .code-text-picker,
+    .code-number-picker {
+        float: left;
+        height: 500px;
+
+        .mat-button-toggle {
+            font-family: 'league-gothic', sans-serif !important;
+            font-size: 2rem;
+            padding: 25px;
+
+            &.mat-button-toggle-checked {
+                color: white;
+            }
+
+            &:hover {
+                color: white;
+            }
+        }
+    }
+
+    .code-text-picker {
+        width: 150px;
+
+        .mat-button-toggle {
+            background-color: #0d75fb;
+
+            &.mat-button-toggle-checked {
+                background-color: darken(#0d75fb, 20%);
+            }
+        }
+    }
+
+    .code-number-picker {
+        width: 250px;
+        text-align: right;
+
+        .mat-button-toggle {
+            background-color: #cd300d;
+            width: 100%;
+
+            &.mat-button-toggle-checked {
+                background-color: darken(#cd300d, 20%);
+            }
+        }
+    }
+}
+
+.row {
+    display: inline-flex;
+    background-color: #cd300d;
+}
+
+.join-button {
+    background-color: #ffd900;
+}

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CodenamesCardService, IGame } from '../codenames-card.service';
 import { CodenamesCard } from '../codenames-card.class';
-import { map, mergeMap, switchMap, flatMap, take } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { flatMap } from 'rxjs/operators';
 
 // TODO:
 //   - validate game board
@@ -20,22 +20,9 @@ export class CodenamesBoardComponent implements OnInit {
     game: IGame;
     cards: Array<CodenamesCard>;
 
-    constructor(private route: ActivatedRoute, private cardService: CodenamesCardService) {}
+    constructor(private router: Router, private route: ActivatedRoute, private cardService: CodenamesCardService) {}
 
     ngOnInit() {
-        // this.cardService.newGame().subscribe(game => {
-        //     this.game = game;
-        //     this.cards = game.cards;
-        // });
-
-        // this.route.params.subscribe(params => {
-        //     this.cardService.getGameObservable(params['id']).subscribe(game => {
-        //         console.log('heres the game', game);
-        //         this.game = game;
-        //         this.cards = game.cards;
-        //     });
-        // });
-
         this.route.params
             .pipe(
                 flatMap(params => {
@@ -44,7 +31,6 @@ export class CodenamesBoardComponent implements OnInit {
                 })
             )
             .subscribe(game => {
-                console.log(game);
                 this.game = game;
                 this.cards = game.cards;
             });
@@ -71,5 +57,13 @@ export class CodenamesBoardComponent implements OnInit {
         }
 
         return '';
+    }
+
+    navigateToKey(): void {
+        this.router.navigate(['/key', this.id]);
+    }
+
+    navigateToBoard(): void {
+        this.router.navigate(['/board', this.id]);
     }
 }

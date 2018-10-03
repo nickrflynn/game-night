@@ -1,0 +1,38 @@
+<div class="code-picker-container">
+    <div class="code-text-picker">
+        <mat-button-toggle-group vertical #text="matButtonToggleGroup">
+            <mat-button-toggle value="alpha">ALPHA</mat-button-toggle>
+            <mat-button-toggle value="bravo">BRAVO</mat-button-toggle>
+            <mat-button-toggle value="charlie">CHARLIE</mat-button-toggle>
+            <mat-button-toggle value="delta">DELTA</mat-button-toggle>
+            <mat-button-toggle value="echo">ECHO</mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+    <div class="code-number-picker">
+        <mat-button-toggle-group vertical #number="matButtonToggleGroup">
+            <div class="row">
+                <mat-button-toggle value="00">00</mat-button-toggle>
+                <mat-button-toggle value="01">01</mat-button-toggle>
+            </div>
+            <div class="row">
+                <mat-button-toggle value="02">02</mat-button-toggle>
+                <mat-button-toggle value="03">03</mat-button-toggle>
+            </div>
+            <div class="row">
+                <mat-button-toggle value="04">04</mat-button-toggle>
+                <mat-button-toggle value="05">05</mat-button-toggle>
+            </div>
+            <div class="row">
+                <mat-button-toggle value="06">06</mat-button-toggle>
+                <mat-button-toggle value="07">07</mat-button-toggle>
+            </div>
+            <div class="row">
+                <mat-button-toggle value="08">08</mat-button-toggle>
+                <mat-button-toggle value="09">09</mat-button-toggle>
+            </div>
+        </mat-button-toggle-group>
+    </div>
+
+    <a mat-raised-button class="join-button" [disabled]="!text.value || !number.value" routerLink="{{'/board/' + text.value + '-' + number.value}}">Join
+        Game</a>
+</div>
