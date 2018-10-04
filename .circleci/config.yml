@@ -15,10 +15,10 @@ jobs:
                       - './node_modules'
             - run:
                   name: angular-build
-                  command: npm build --prod --aot --no-progress
+                  command: npm build-ci
             - run:
                   name: angular-test
-                  command: npm test --watch=false --progress=false --browsers=ChromeHeadlessCI
+                  command: npm test-ci
             - run:
                   name: angular-lint
                   command: npm lint
