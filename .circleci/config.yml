@@ -15,10 +15,10 @@ jobs:
                       - './node_modules'
             - run:
                   name: angular-build
-                  command: npm build-ci
+                  command: npm run build-ci
             - run:
                   name: angular-test
-                  command: npm test-ci
+                  command: npm run test-ci
             - run:
                   name: angular-lint
-                  command: npm lint
+                  command: npm run lint
