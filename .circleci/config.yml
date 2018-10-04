@@ -1,13 +1,24 @@
 version: 2
 jobs:
-  build:
-    docker:
-      - image: debian:stretch
-    steps:
-      - checkout
-      - run:
-          name: Greeting
-          command: echo Hello, world.
-      - run:
-          name: Print the Current Time
-          command: date
+    build:
+        working_directory: ~/flynn-game-night
+        docker:
+            - image: circleci/node:8-browsers
+        steps:
+            - checkout
+            - restore_cache:
+                  key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
+            - run: npm install
+            - save_cache:
+                  key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
+                  paths:
+                      - './node_modules'
+            - run:
+                  name: angular-build
+                  command: npm build --prod --aot --no-progress
+            - run:
+                  name: angular-test
+                  command: npm test --single-run --no-progress
+            - run:
+                  name: angular-lint
+                  command: npm lint
