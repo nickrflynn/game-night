@@ -7,10 +7,10 @@ jobs:
         steps:
             - checkout
             - restore_cache:
-                  key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
+                  key: flynn-game-night-{{ .Branch }}-{{ checksum "package.json" }}
             - run: npm install
             - save_cache:
-                  key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
+                  key: flynn-game-night-{{ .Branch }}-{{ checksum "package.json" }}
                   paths:
                       - './node_modules'
             - run:
@@ -18,7 +18,7 @@ jobs:
                   command: npm build --prod --aot --no-progress
             - run:
                   name: angular-test
-                  command: npm test --single-run --no-progress
+                  command: npm test --watch=false --progress=false --browsers=ChromeHeadlessCI
             - run:
                   name: angular-lint
                   command: npm lint
