@@ -5,18 +5,18 @@ jobs:
         docker:
             - image: circleci/node:8-browsers
         steps:
-            - run: echo "Test Environment Variable $TestEnvVar"
-            # - checkout
-            # - restore_cache:
-            #       key: flynn-game-night-{{ .Branch }}-{{ checksum "package.json" }}
-            # - run: npm install
-            # - save_cache:
-            #       key: flynn-game-night-{{ .Branch }}-{{ checksum "package.json" }}
-            #       paths:
-            #           - './node_modules'
-            # - run:
-            #       name: angular-build
-            #       command: npm run build-ci
+            - checkout
+            - run: echo $firebaseconfig >> ~/flynn-game-night/src/firebase.ts
+            - restore_cache:
+                  key: flynn-game-night-{{ .Branch }}-{{ checksum "package.json" }}
+            - run: npm install
+            - save_cache:
+                  key: flynn-game-night-{{ .Branch }}-{{ checksum "package.json" }}
+                  paths:
+                      - './node_modules'
+            - run:
+                  name: angular-build
+                  command: npm run build-ci
             # - run:
             #       name: angular-test
             #       command: npm run test-ci
