@@ -7,8 +7,8 @@ jobs:
         steps:
             - checkout
 
-            # $firebaseconfig is a CircleCI environment variable containing the Firebase API key, etc.
-            - run: echo $firebaseconfig >> ~/flynn-game-night/src/firebase.ts
+            # $FIREBASE_CONFIG is a CircleCI environment variable containing the Firebase API key, etc.
+            - run: echo $FIREBASE_CONFIG >> ~/flynn-game-night/src/firebase.ts
 
             - restore_cache:
                   key: flynn-game-night-{{ .Branch }}-{{ checksum "package.json" }}
@@ -21,13 +21,16 @@ jobs:
                       - './node_modules'
 
             - run:
-                  name: angular-build
+                  name: Angular Build
                   command: npm run build-ci
 
             - run:
-                  name: angular-test
+                  name: Angular Test
                   command: npm run test-ci
 
             - run:
-                  name: angular-lint
+                  name: Angular Lint
                   command: npm run lint
+            - run:
+                  name: Deploy to Firebase
+                  command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
