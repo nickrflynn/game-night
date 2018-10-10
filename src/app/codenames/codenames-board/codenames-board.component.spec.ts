@@ -3,7 +3,7 @@ import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-import { MatGridListModule, MatCardModule } from '@angular/material';
+import { MatGridListModule, MatCardModule, MatDialogModule } from '@angular/material';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 import { CodenamesBoardComponent } from './codenames-board.component';
@@ -19,7 +19,7 @@ describe('CodenamesBoardComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [CodenamesBoardComponent],
-            imports: [RouterTestingModule, HttpClientTestingModule, MatGridListModule, MatCardModule],
+            imports: [RouterTestingModule, HttpClientTestingModule, MatGridListModule, MatCardModule, MatDialogModule],
             providers: [{ provide: AngularFirestore, useValue: FirestoreStub }]
         }).compileComponents();
     }));

@@ -5,8 +5,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { flatMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
 
-// TODO:
-//   - validate game board
+@Component({
+    selector: 'app-confirm-navigate-to-key-dialog',
+    templateUrl: './confirm-navigate-to-key-dialog.component.html',
+    styleUrls: ['./confirm-navigate-to-key-dialog.component.scss']
+})
+export class ConfirmNavigateToKeyDialogComponent {}
 
 @Component({
     selector: 'app-codenames-board',
@@ -79,10 +83,3 @@ export class CodenamesBoardComponent implements OnInit {
         this.router.navigate(['/board', this.id]);
     }
 }
-
-@Component({
-    selector: 'app-confirm-navigate-to-key-dialog',
-    templateUrl: './confirm-navigate-to-key-dialog.component.html',
-    styleUrls: ['./confirm-navigate-to-key-dialog.component.scss']
-})
-export class ConfirmNavigateToKeyDialogComponent {}

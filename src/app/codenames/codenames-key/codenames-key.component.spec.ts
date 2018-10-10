@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-import { MatGridListModule, MatCardModule } from '@angular/material';
+import { MatGridListModule, MatCardModule, MatDialogModule } from '@angular/material';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 import { CodenamesKeyComponent } from './codenames-key.component';
@@ -18,7 +18,7 @@ describe('CodenamesKeyComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [CodenamesKeyComponent, CodenamesBoardComponent],
-            imports: [RouterTestingModule, HttpClientTestingModule, MatGridListModule, MatCardModule],
+            imports: [RouterTestingModule, HttpClientTestingModule, MatGridListModule, MatCardModule, MatDialogModule],
             providers: [{ provide: AngularFirestore, useValue: FirestoreStub }]
         }).compileComponents();
     }));
