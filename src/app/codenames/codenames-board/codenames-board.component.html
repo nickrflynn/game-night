@@ -1,18 +1,28 @@
-<mat-grid-list cols="5" rowHeight="2:1">
-    <mat-grid-tile *ngFor="let card of cards">
-        <mat-card [ngClass]="{'key': isKey, 'locked': card.locked}" class="mat-elevation-z9 {{getCardColor(card, isKey)}}">
-            {{ card.value }}
-            <button mat-mini-fab class="reveal" (click)="checkCard(card)" *ngIf="!card.locked">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                </svg>
+<div class="board-container">
+    <div class="cards-container">
+        <mat-grid-list cols="5" rowHeight="2:1">
+            <mat-grid-tile *ngFor="let card of cards">
+                <mat-card [ngClass]="{'key': isKey, 'locked': card.locked}" class="card {{getCardColor(card, isKey)}}"
+                    (click)="checkCard(card)" tabindex="0">
+                    <span>{{ card.value }}</span>
+                    <div class="reveal" *ngIf="!card.locked">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+    <div class="info-container">
+        <div class="toggle-container">
+            <button mat-raised-button class="key-board-toggle" (click)="navigateToKey()" *ngIf="cards && !isKey">
+                View Spymaster Key
             </button>
-        </mat-card>
-    </mat-grid-tile>
-</mat-grid-list>
-<button mat-raised-button class="key-board-toggle mat-elevation-z9" (click)="navigateToKey()" *ngIf="cards && !isKey">View
-    Key</button>
-<button mat-raised-button class="key-board-toggle mat-elevation-z9" (click)="navigateToBoard()" *ngIf="cards && isKey">View
-    Board</button>
+            <button mat-raised-button class="key-board-toggle" (click)="navigateToBoard()" *ngIf="cards && isKey">
+                View Field Operative Board
+            </button>
+        </div>
+        <div class="game-id" *ngIf="cards">{{ "Game ID: " + id | uppercase }}</div>
+    </div>

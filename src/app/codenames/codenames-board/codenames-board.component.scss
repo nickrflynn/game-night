@@ -1,22 +1,38 @@
-$white: #ffffff;
-$red: #cd300d;
-$blue: #0d75fb;
-$black: #333d43;
-$tan: #dfc6a4;
-$gold: #ffd900;
+@import './../../../variables';
 
-.key-board-toggle {
-    font-family: 'league-gothic', sans-serif;
-    text-transform: uppercase;
-    font-size: 2rem;
-    margin-left: 25px;
-    margin-top: 10px;
-    padding: 15px 30px;
-    background-color: $gold;
+@mixin darken-on-states($color) {
+    &:active:not(.locked),
+    &:focus:not(.locked),
+    &:hover:not(.locked) {
+        background-color: darken($color, 5%);
+    }
 }
 
-.mat-card {
-    font-family: 'league-gothic', sans-serif;
+.toggle-container {
+    float: left;
+
+    .key-board-toggle {
+        font-family: $font;
+        text-transform: uppercase;
+        font-size: 2rem;
+        margin-left: 25px;
+        margin-top: 10px;
+        padding: 15px 30px;
+        background-color: $gold;
+        box-shadow: 0 5px 6px -3px rgba(0, 0, 0, 0.2), 0 9px 12px 1px rgba(0, 0, 0, 0.14), 0 3px 16px 2px rgba(0, 0, 0, 0.12);
+    }
+}
+
+.game-id {
+    color: white;
+    font-size: 3rem;
+    text-align: right;
+    padding-top: 15px;
+    padding-right: 30px;
+}
+
+.card {
+    font-family: $font;
     text-transform: uppercase;
     font-size: 4rem;
     height: calc(100% - 96px);
@@ -26,41 +42,30 @@ $gold: #ffd900;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    &:hover {
-        background-color: darken($white, 5%);
-    }
+    box-shadow: 0 5px 6px -3px rgba(0, 0, 0, 0.2), 0 9px 12px 1px rgba(0, 0, 0, 0.14), 0 3px 16px 2px rgba(0, 0, 0, 0.12);
 
     &.red {
         background-color: $red;
 
-        &:hover {
-            background-color: darken($red, 5%);
-        }
+        @include darken-on-states($red);
     }
 
     &.blue {
         background-color: $blue;
 
-        &:hover {
-            background-color: darken($blue, 5%);
-        }
+        @include darken-on-states($blue);
     }
 
     &.black {
         background-color: $black;
 
-        &:hover {
-            background-color: darken($black, 5%);
-        }
+        @include darken-on-states($black);
     }
 
     &.tan {
         background-color: $tan;
 
-        &:hover {
-            background-color: darken($tan, 5%);
-        }
+        @include darken-on-states($tan);
     }
 
     .reveal {
@@ -70,7 +75,12 @@ $gold: #ffd900;
         height: 50px;
         width: 50px;
         visibility: hidden;
-        background-color: $gold;
+        color: $green;
+
+        svg {
+            height: 40px;
+            width: 40px;
+        }
     }
 
     &:active,
@@ -79,6 +89,21 @@ $gold: #ffd900;
         .reveal {
             visibility: visible;
         }
+
+        &:not(.locked) {
+            cursor: pointer;
+            background-color: darken($white, 5%);
+        }
+    }
+}
+
+@mixin key-revealed-card($outline-offset, $color) {
+    background-color: lighten($color, 25%);
+
+    &.locked {
+        background-color: $color;
+        outline: $outline-offset solid darken($color, 25%);
+        outline-offset: -$outline-offset;
     }
 }
 
@@ -86,48 +111,24 @@ $gold: #ffd900;
     $locked-outline-width: 15px;
 
     &.red {
-        &.locked {
-            background-color: $red;
-            outline: $locked-outline-width solid darken($red, 25%);
-            outline-offset: -$locked-outline-width;
-        }
-
-        background-color: lighten($red, 25%);
+        @include key-revealed-card($locked-outline-width, $red);
     }
 
     &.blue {
-        &.locked {
-            background-color: $blue;
-            outline: $locked-outline-width solid darken($blue, 25%);
-            outline-offset: -$locked-outline-width;
-        }
-
-        background-color: lighten($blue, 25%);
+        @include key-revealed-card($locked-outline-width, $blue);
     }
 
     &.black {
-        &.locked {
-            background-color: $black;
-            outline: $locked-outline-width solid darken($black, 25%);
-            outline-offset: -$locked-outline-width;
-        }
-
-        background-color: lighten($black, 25%);
+        @include key-revealed-card($locked-outline-width, $black);
     }
 
     &.tan {
-        &.locked {
-            background-color: $tan;
-            outline: $locked-outline-width solid darken($tan, 25%);
-            outline-offset: -$locked-outline-width;
-        }
-
-        background-color: lighten($tan, 25%);
+        @include key-revealed-card($locked-outline-width, $tan);
     }
 }
 
 @media only screen and (max-width: 1600px) {
-    .mat-card {
+    .card {
         font-size: 3.5rem;
         height: calc(100% - 72px);
         width: calc(100% - 72px);
@@ -135,19 +136,19 @@ $gold: #ffd900;
 }
 
 @media only screen and (max-width: 1200px) {
-    .mat-card {
+    .card {
         font-size: 2.5rem;
     }
 }
 
 @media only screen and (max-width: 1000px) {
-    .mat-card {
+    .card {
         font-size: 2rem;
     }
 }
 
 @media only screen and (max-width: 800px) {
-    .mat-card {
+    .card {
         font-size: 1.5rem;
     }
 }

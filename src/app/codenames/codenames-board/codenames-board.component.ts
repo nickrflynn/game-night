@@ -3,6 +3,7 @@ import { CodenamesCardService, IGame } from '../codenames-card.service';
 import { CodenamesCard } from '../codenames-card.class';
 import { ActivatedRoute, Router } from '@angular/router';
 import { flatMap } from 'rxjs/operators';
+import { MatDialog } from '@angular/material';
 
 // TODO:
 //   - validate game board
@@ -20,7 +21,12 @@ export class CodenamesBoardComponent implements OnInit {
     game: IGame;
     cards: Array<CodenamesCard>;
 
-    constructor(private router: Router, private route: ActivatedRoute, private cardService: CodenamesCardService) {}
+    constructor(
+        private router: Router,
+        private route: ActivatedRoute,
+        private cardService: CodenamesCardService,
+        private dialog: MatDialog
+    ) {}
 
     ngOnInit() {
         this.route.params
@@ -60,10 +66,23 @@ export class CodenamesBoardComponent implements OnInit {
     }
 
     navigateToKey(): void {
-        this.router.navigate(['/key', this.id]);
+        const dialogRef = this.dialog.open(ConfirmNavigateToKeyDialogComponent);
+
+        dialogRef.afterClosed().subscribe(viewKey => {
+            if (viewKey) {
+                this.router.navigate(['/key', this.id]);
+            }
+        });
     }
 
     navigateToBoard(): void {
         this.router.navigate(['/board', this.id]);
     }
 }
+
+@Component({
+    selector: 'app-confirm-navigate-to-key-dialog',
+    templateUrl: './confirm-navigate-to-key-dialog.component.html',
+    styleUrls: ['./confirm-navigate-to-key-dialog.component.scss']
+})
+export class ConfirmNavigateToKeyDialogComponent {}

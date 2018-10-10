@@ -1,4 +1,5 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import './variables';
 
 html,
 body {
@@ -30,4 +31,9 @@ body {
     -webkit-background-size: 16px 16px;
     -moz-background-size: 16px 16px;
     background-size: 16px 16px;
+}
+
+// Angular Material dialog backdrop
+.cdk-overlay-dark-backdrop {
+    background: rgba(0, 0, 0, 0.7);
 }

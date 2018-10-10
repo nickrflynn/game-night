@@ -1,0 +1,9 @@
+<h2 mat-dialog-title class="warning-title">Warning</h2>
+<mat-dialog-content class="mat-typography">
+    <p class="warning-message">You should only view the key if you are the spymaster. If you are not, revealing the key
+        will ruin the game!</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Go back</button>
+    <button mat-button color="warn" [mat-dialog-close]="true" cdkFocusInitial>View the key</button>
+</mat-dialog-actions>

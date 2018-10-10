@@ -16,9 +16,16 @@ a {
 }
 
 .code-picker-container {
-    height: 500px;
+    height: 800px;
     width: 400px;
     text-align: center;
+
+    .title {
+        color: white;
+        font-size: 4rem;
+        text-transform: uppercase;
+        font-weight: normal;
+    }
 
     .code-text-picker,
     .code-number-picker {
