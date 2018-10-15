@@ -34,6 +34,6 @@
         </mat-button-toggle-group>
     </div>
 
-    <a mat-raised-button class="join-button" [attr.disabled]="!text.value || !number.value" routerLink="{{'/board/' + text.value + '-' + number.value}}">Join
+    <a mat-raised-button class="join-button" [disabled]="!text.value || !number.value" routerLink="{{'/board/' + text.value + '-' + number.value}}">Join
         Game</a>
 </div>

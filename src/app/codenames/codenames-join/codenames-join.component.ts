@@ -6,8 +6,6 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./codenames-join.component.scss']
 })
 export class CodenamesJoinComponent implements OnInit {
-    code: string = 'test';
-
     constructor() {}
 
     ngOnInit() {}
